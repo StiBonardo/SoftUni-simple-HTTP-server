@@ -1,0 +1,9 @@
+C:\Coding\WebBasics\SUS\SUS.HTTP\bin\Debug\netstandard2.0\SUS.HTTP.deps.json
+C:\Coding\WebBasics\SUS\SUS.HTTP\bin\Debug\netstandard2.0\SUS.HTTP.dll
+C:\Coding\WebBasics\SUS\SUS.HTTP\bin\Debug\netstandard2.0\SUS.HTTP.pdb
+C:\Coding\WebBasics\SUS\SUS.HTTP\obj\Debug\netstandard2.0\SUS.HTTP.csprojAssemblyReference.cache
+C:\Coding\WebBasics\SUS\SUS.HTTP\obj\Debug\netstandard2.0\SUS.HTTP.AssemblyInfoInputs.cache
+C:\Coding\WebBasics\SUS\SUS.HTTP\obj\Debug\netstandard2.0\SUS.HTTP.AssemblyInfo.cs
+C:\Coding\WebBasics\SUS\SUS.HTTP\obj\Debug\netstandard2.0\SUS.HTTP.csproj.CoreCompileInputs.cache
+C:\Coding\WebBasics\SUS\SUS.HTTP\obj\Debug\netstandard2.0\SUS.HTTP.dll
+C:\Coding\WebBasics\SUS\SUS.HTTP\obj\Debug\netstandard2.0\SUS.HTTP.pdb
