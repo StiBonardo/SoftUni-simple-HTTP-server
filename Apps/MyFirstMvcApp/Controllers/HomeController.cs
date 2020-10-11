@@ -8,7 +8,7 @@ using SUS.MvcFramework;
 namespace MyFirstMvcApp.Controllers
 {
     public class HomeController : Controller
-    {
+    { 
         public HttpResponse Index(HttpRequest request)
         {
             var responseHtml = "<h1>Welcome!</h1>" +

@@ -16,7 +16,7 @@ namespace MyFirstMvcApp.Controllers
             response.Cookies.Add(new ResponseCookie("sid", Guid.NewGuid().ToString())
             { HttpOnly = true, MaxAge = 60 * 60 * 60 * 24 * 60 });
 
-            return response;
+            return response; 
         }
         public HttpResponse Register(HttpRequest request)
         {

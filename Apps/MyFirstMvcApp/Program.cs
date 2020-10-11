@@ -16,7 +16,7 @@ namespace MyFirstMvcApp
             server.AddRoute("/about", new HomeController().About);
             server.AddRoute("/users/login", new UsersController().Login);
             server.AddRoute("/users/register", new UsersController().Register);
-
+             
             await server.StartAsync(80);
         }
 
