@@ -149,7 +149,11 @@
         },
         "frameworks": {
           "netstandard2.0": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Coding\\WebBasics\\SUS\\SUS.HTTP\\SUS.HTTP.csproj": {
+                "projectPath": "C:\\Coding\\WebBasics\\SUS\\SUS.HTTP\\SUS.HTTP.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

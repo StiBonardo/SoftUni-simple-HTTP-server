@@ -16,3 +16,17 @@ C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\obj\Debug\netcoreapp3.1\MyFirstMvcApp
 C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\obj\Debug\netcoreapp3.1\MyFirstMvcApp.dll
 C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\obj\Debug\netcoreapp3.1\MyFirstMvcApp.pdb
 C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\obj\Debug\netcoreapp3.1\MyFirstMvcApp.genruntimeconfig.cache
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\Views\Users\Login.cshtml
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\Views\Users\Register.cshtml
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\SUS.MvcFramework.dll
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\SUS.MvcFramework.pdb
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\Views\Cards\Add.cshtml
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\Views\Cards\All.cshtml
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\Views\Cards\Collection.cshtml
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\Views\Home\Index.cshtml
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\Views\Shared\Error.cshtml
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\Views\Shared\_Layout.cshtml
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\wwwroot\css\bootstrap.min.css
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\wwwroot\css\custom.css
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\wwwroot\js\bootstrap.bundle.min.js
+C:\Coding\WebBasics\SUS\Apps\MyFirstMvcApp\bin\Debug\netcoreapp3.1\wwwroot\js\custom.js

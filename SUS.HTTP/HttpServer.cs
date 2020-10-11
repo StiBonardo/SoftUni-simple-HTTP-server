@@ -11,21 +11,14 @@ namespace SUS.HTTP
 {
     public class HttpServer : IHttpServer
     {
-        private IDictionary<string, Func<HttpRequest, HttpResponse>> routeTable =
-            new Dictionary<string, Func<HttpRequest, HttpResponse>>();
 
-        public void AddRoute(string path, System.Func<HttpRequest, HttpResponse> action)
+        private List<Route> routeTable;
+
+        public HttpServer(List<Route> routeTable)
         {
-            if (routeTable.ContainsKey(path))
-            {
-                routeTable[path] = action;
-            }
-            else
-            {
-                routeTable.Add(path, action);
-            }
+            this.routeTable = routeTable;
         }
-
+        
         public async Task StartAsync(int port)
         {
             var tcpListener = new TcpListener(IPAddress.Loopback, port);
@@ -70,13 +63,13 @@ namespace SUS.HTTP
                     var requestString = Encoding.UTF8.GetString(data.ToArray());
                     var request = new HttpRequest(requestString);
 
-                    Console.WriteLine(requestString);
+                    Console.WriteLine($"{request.Method} {request.Path} => {request.Headers.Count}");
 
                     HttpResponse response;
-                    if (this.routeTable.ContainsKey(request.Path))
+                    var route = this.routeTable.FirstOrDefault(x => x.Path == request.Path);
+                    if (route != null)
                     {
-                        var action = this.routeTable[request.Path];
-                        response = action(request);
+                        response = route.Action(request);
                     }
                     else
                     {
