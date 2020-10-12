@@ -4,9 +4,9 @@ C:\Coding\WebBasics\SUS\SUS.MvcFramework\bin\Debug\netstandard2.0\SUS.MvcFramewo
 C:\Coding\WebBasics\SUS\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.csprojAssemblyReference.cache
 C:\Coding\WebBasics\SUS\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.AssemblyInfoInputs.cache
 C:\Coding\WebBasics\SUS\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.AssemblyInfo.cs
-C:\Coding\WebBasics\SUS\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.csproj.CoreCompileInputs.cache
 C:\Coding\WebBasics\SUS\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.dll
 C:\Coding\WebBasics\SUS\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.pdb
 C:\Coding\WebBasics\SUS\SUS.MvcFramework\bin\Debug\netstandard2.0\SUS.HTTP.dll
 C:\Coding\WebBasics\SUS\SUS.MvcFramework\bin\Debug\netstandard2.0\SUS.HTTP.pdb
 C:\Coding\WebBasics\SUS\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.csproj.CopyComplete
+C:\Coding\WebBasics\SUS\SUS.MvcFramework\obj\Debug\netstandard2.0\SUS.MvcFramework.csproj.CoreCompileInputs.cache
