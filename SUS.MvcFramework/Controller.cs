@@ -16,6 +16,8 @@ namespace SUS.MvcFramework
             this.viewEngine = new SUSViewEngine();
         }
 
+        public HttpRequest Request { get; set; }
+
         public HttpResponse View(object viewModel = null,
             [CallerMemberName]string path = null)
         {
