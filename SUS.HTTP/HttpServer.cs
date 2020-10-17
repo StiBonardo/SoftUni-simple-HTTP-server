@@ -74,11 +74,17 @@ namespace SUS.HTTP
                     }
                     else
                     {
-                        response = new HttpResponse("text/htm", null, HttpStatusCode.NotFound);
+                        response = new HttpResponse("text/htm", new byte[0], HttpStatusCode.NotFound);
                     }
 
-                    response.Cookies.Add(new ResponseCookie("sid", Guid.NewGuid().ToString())
-                    { HttpOnly = true, MaxAge = 60 * 60 * 60 * 24 * 60 });
+                    var sessionCookie = request.Cookies.FirstOrDefault(x => x.Name == HttpConstants.CookieSessionName);
+                    if (sessionCookie != null)
+                    {
+                        var responseSessionCookie = new ResponseCookie(sessionCookie.Name, sessionCookie.Value);
+                        responseSessionCookie.Path = "/";
+                        response.Cookies.Add(responseSessionCookie);
+                    }
+
                     var responseHeaderBytes = Encoding.UTF8.GetBytes(response.ToString());
                     await stream.WriteAsync(responseHeaderBytes, 0, responseHeaderBytes.Length);
                     await stream.WriteAsync(response.Body, 0, response.Body.Length);
