@@ -38,8 +38,6 @@ namespace SUS.MvcFramework
 
             foreach (var controllerType in controllerTypes)
             {
-                Console.WriteLine(controllerType.Name + Environment.NewLine);
-
                 var methods = controllerType
                     .GetMethods()
                     .Where(x => 
@@ -79,7 +77,7 @@ namespace SUS.MvcFramework
                         return response;
                     }));
 
-                    Console.WriteLine(url);
+                   Console.WriteLine(url);
                 }
             }
         }
@@ -111,12 +109,6 @@ namespace SUS.MvcFramework
 
                     return new HttpResponse(contentType, fileContent);
                 }));
-            }
-
-            Console.WriteLine("All registered routes:");
-            foreach (var route in routeTable)
-            {
-                Console.WriteLine($"{route.Method} {route.Path}");
             }
         }
     }

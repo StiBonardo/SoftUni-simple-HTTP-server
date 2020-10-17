@@ -19,7 +19,7 @@ namespace SUS.HTTP
             this.routeTable = routeTable;
         }
         
-        public async Task StartAsync(int port)
+        public async Task StartAsync(int port = 80)
         {
             var tcpListener = new TcpListener(IPAddress.Loopback, port);
             tcpListener.Start();

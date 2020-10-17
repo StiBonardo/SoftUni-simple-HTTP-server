@@ -2,9 +2,9 @@
 
 using SUS.HTTP;
 using SUS.MvcFramework;
-using MyFirstMvcApp.ViewModels;
+using BattleCards.ViewModels;
 
-namespace MyFirstMvcApp.Controllers
+namespace BattleCards.Controllers
 {
     public class HomeController : Controller
     {
@@ -16,6 +16,7 @@ namespace MyFirstMvcApp.Controllers
                 Year = DateTime.UtcNow.Year,
                 Message = "Welcome to Battle Cards",
             };
+
             return this.View(viewModel);
         }
 
