@@ -77,11 +77,10 @@ namespace SUS.HTTP
                         response = new HttpResponse("text/htm", new byte[0], HttpStatusCode.NotFound);
                     }
 
-                    var sessionCookie = request.Cookies.FirstOrDefault(x => x.Name == HttpConstants.CookieSessionName);
+                    var sessionCookie = request.Cookies.FirstOrDefault(x => x.Name == HttpConstants.SessionCookieName);
                     if (sessionCookie != null)
                     {
                         var responseSessionCookie = new ResponseCookie(sessionCookie.Name, sessionCookie.Value);
-                        responseSessionCookie.Path = "/";
                         response.Cookies.Add(responseSessionCookie);
                     }
 

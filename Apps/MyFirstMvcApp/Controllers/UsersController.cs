@@ -13,16 +13,34 @@ namespace BattleCards.Controllers
         {
             return this.View();
         }
-        public HttpResponse Register()
-        {
-            return this.View();
-        }
 
-        [HttpPost]
+        [HttpPost("/Users/Login")]
         public HttpResponse DoLogin()
         {
             return this.Redirect("/");
         }
 
+        public HttpResponse Register()
+        {
+            return this.View();
+        }
+
+        [HttpPost("Users/Register")]
+        public HttpResponse DoRegister()
+        {
+            return this.View();
+        }
+
+
+        public HttpResponse Logout()
+        {
+            if (!this.IsUserSignedIn())
+            {
+                return this.Error("Only logged in users can logout.");
+            }
+
+            this.SignOut();
+            return this.Redirect("/");
+        }
     }
 }

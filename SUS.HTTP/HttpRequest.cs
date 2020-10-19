@@ -18,7 +18,7 @@ namespace SUS.HTTP
             this.FormData = new Dictionary<string, string>();
 
             var lines = requestString.Split(
-                    new string[] { HttpConstants.NewLine }, System.StringSplitOptions.None);
+                    new string[] { HttpConstants.NewLine }, StringSplitOptions.None);
 
             var headerLine = lines[0];
             var headerLineParts = headerLine.Split(' ');
@@ -60,15 +60,15 @@ namespace SUS.HTTP
                 }
             }
 
-            var sessionCookie = this.Cookies.FirstOrDefault(x => x.Name == HttpConstants.CookieSessionName);
+            var sessionCookie = this.Cookies.FirstOrDefault(x => x.Name == HttpConstants.SessionCookieName);
             if (sessionCookie == null)
             {
                 var sessionId = Guid.NewGuid().ToString();
                 this.Session = new Dictionary<string, string>();
                 Sessions.Add(sessionId, this.Session);
-                this.Cookies.Add(new Cookie(HttpConstants.CookieSessionName, sessionId));
+                this.Cookies.Add(new Cookie(HttpConstants.SessionCookieName, sessionId));
             }
-            else if (!Session.ContainsKey(sessionCookie.Value))
+            else if (!Sessions.ContainsKey(sessionCookie.Value))
             {
                 this.Session = new Dictionary<string, string>();
                 Sessions.Add(sessionCookie.Value, this.Session);
@@ -82,11 +82,11 @@ namespace SUS.HTTP
 
             if (!string.IsNullOrEmpty(this.Body))
             {
-                var parameters = this.Body.Split('&');
+                var parameters = this.Body.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
 
                 foreach (var paramParts in parameters)
                 {
-                    var kvp = paramParts.Split(new string[] { "=" }, StringSplitOptions.RemoveEmptyEntries);
+                    var kvp = paramParts.Split(new [] { '=' }, 2);
                     var key = kvp[0];
                     var value = WebUtility.UrlDecode(kvp[1]);
 

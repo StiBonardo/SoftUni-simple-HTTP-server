@@ -22,11 +22,11 @@ namespace SUS.HTTP
         {
             var cookieBuilder = new StringBuilder();
 
-            cookieBuilder.Append($"{this.Name}={this.Value};");
+            cookieBuilder.Append($"{this.Name}={this.Value}; Path={this.Path};");
             
             if (this.MaxAge != 0)
             {
-                cookieBuilder.Append($" Max-Age={this.MaxAge}; Path={this.Path};");
+                cookieBuilder.Append($" Max-Age={this.MaxAge};");
             }
 
             if (this.HttpOnly)
