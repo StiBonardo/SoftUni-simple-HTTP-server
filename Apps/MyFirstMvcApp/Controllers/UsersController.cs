@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using BattleCards.Data;
 using BattleCards.Services;
 using SUS.HTTP;
 using SUS.MvcFramework;
@@ -11,11 +12,11 @@ namespace BattleCards.Controllers
 {
     public class UsersController : Controller
     {
-        private UsersService userService;
+        private readonly IUsersService usersService;
 
-        public UsersController()
+        public UsersController(IUsersService usersService)
         {
-            this.userService = new UsersService();
+            this.usersService = usersService;
         }
 
         public HttpResponse Login()
@@ -38,7 +39,7 @@ namespace BattleCards.Controllers
 
             var username = this.Request.FormData["username"];
             var password = this.Request.FormData["password"];
-            var userId = this.userService.GetUserId(username, password);
+            var userId = this.usersService.GetUserId(username, password);
             
             if (userId == null)
             {
@@ -83,7 +84,7 @@ namespace BattleCards.Controllers
                     "Invalid username. The username should be contained of only alphanumeric characters.");
             }
 
-            if (!this.userService.IsUsernameAvailable(username))
+            if (!this.usersService.IsUsernameAvailable(username))
             {
                 return this.Error("Username is not available!");
             }
@@ -98,7 +99,7 @@ namespace BattleCards.Controllers
                 return this.Error("Passwords should match!");
             }
 
-            if (!this.userService.IsEmailAvailable(email))
+            if (!this.usersService.IsEmailAvailable(email))
             {
                 return this.Error("Email is not available!");
             }
@@ -108,7 +109,7 @@ namespace BattleCards.Controllers
                 return this.Error("Invalid email");
             }
 
-            this.userService.CreateUser(username, password, email);
+            this.usersService.CreateUser(username, password, email);
             return this.Redirect("/Users/Login");
         }
 

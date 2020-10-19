@@ -10,6 +10,13 @@ namespace BattleCards.Controllers
 {
     public class CardsController : Controller
     {
+        private readonly ApplicationDbContext db;
+
+        public CardsController(ApplicationDbContext db)
+        {
+            this.db = db;
+        }
+
         public HttpResponse Add()
         {
             if (!this.IsUserSignedIn())
@@ -28,14 +35,12 @@ namespace BattleCards.Controllers
                 return this.Redirect("/Users/Login");
             }
 
-            var dbContext = new ApplicationDbContext();
-
             if (this.Request.FormData["name"].Length < 5)
             {
                 return this.Error("Name should be at least five(5), characters long!");
             }
 
-            dbContext.Cards.Add(new Card() 
+            this.db.Cards.Add(new Card() 
             {
                 Attack = int.Parse(this.Request.FormData["attack"]),
                 Health = int.Parse(this.Request.FormData["health"]),
@@ -44,7 +49,7 @@ namespace BattleCards.Controllers
                 Keyword = this.Request.FormData["keyword"],
                 ImageUrl = this.Request.FormData["image"],
             });
-            dbContext.SaveChanges();
+            this.db.SaveChanges();
 
             return this.Redirect("/Cards/All"); 
         }
@@ -56,10 +61,8 @@ namespace BattleCards.Controllers
                 return this.Redirect("/Users/Login");
             }
 
-            var db = new ApplicationDbContext();
-            var cardsViewModel = db.Cards.Select(x => new CardViewModel()
+            var cardsViewModel = this.db.Cards.Select(x => new CardViewModel()
             {
-                //Id = x.Id,
                 Attack = x.Attack,
                 Health = x.Health,
                 ImageUrl = x.ImageUrl,
