@@ -78,7 +78,7 @@ namespace SUS.HTTP
                 this.Session = Sessions[sessionCookie.Value];
             }
              
-            this.Body = bodyWriter.ToString();
+            this.Body = bodyWriter.ToString().TrimEnd();
 
             if (!string.IsNullOrEmpty(this.Body))
             {
