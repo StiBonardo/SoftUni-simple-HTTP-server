@@ -16,6 +16,7 @@ namespace SUS.HTTP
             this.Headers = new List<Header>();
             this.Cookies = new List<Cookie>();
             this.FormData = new Dictionary<string, string>();
+            this.QueryData = new Dictionary<string, string>();
 
             var lines = requestString.Split(
                     new string[] { HttpConstants.NewLine }, StringSplitOptions.None);
@@ -77,27 +78,42 @@ namespace SUS.HTTP
             {
                 this.Session = Sessions[sessionCookie.Value];
             }
-             
+
+            if (this.Path.Contains("?"))
+            {
+                var pathParts = this.Path.Split(new char[] { '?' }, 2);
+                this.Path = pathParts[0];
+                this.QueryString = pathParts[1];
+            }
+            else
+            {
+                this.QueryString = string.Empty;
+            }
+
             this.Body = bodyWriter.ToString().TrimEnd();
 
-            if (!string.IsNullOrEmpty(this.Body))
+            SplitPArameters(this.Body, this.FormData);
+            SplitPArameters(this.QueryString, this.QueryData);
+
+        }
+
+        private void SplitPArameters(string parametersAsString, IDictionary<string, string> output)
+        {
+            var parameters = parametersAsString.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (var parameter in parameters)
             {
-                var parameters = this.Body.Split(new[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
+                var parameterParts = parameter.Split(new[] { '=' }, 2);
+                var name = parameterParts[0];
+                var value = WebUtility.UrlDecode(parameterParts[1]);
 
-                foreach (var paramParts in parameters)
+                if (output.ContainsKey(name))
                 {
-                    var kvp = paramParts.Split(new [] { '=' }, 2);
-                    var key = kvp[0];
-                    var value = WebUtility.UrlDecode(kvp[1]);
-
-                    if (!this.FormData.ContainsKey(key))
-                    {
-                        this.FormData.Add(key, value);
-                    }
-                    else
-                    {
-                        this.FormData[key] = value;
-                    }
+                    output.Add(name, value);
+                }
+                else
+                {
+                    output[name] = value;
                 }
             }
         }
@@ -113,6 +129,10 @@ namespace SUS.HTTP
         public Dictionary<string, string> Session { get; set; }
 
         public string Body { get; set; }
+
+        public string QueryString { get; set; }
+
+        public IDictionary<string, string> QueryData { get; set; }
 
         public IDictionary<string, string> FormData { get; set; }
     }

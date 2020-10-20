@@ -18,7 +18,7 @@ namespace SUS.HTTP
         {
             this.routeTable = routeTable;
         }
-        
+
         public async Task StartAsync(int port = 80)
         {
             var tcpListener = new TcpListener(IPAddress.Loopback, port);
@@ -86,12 +86,16 @@ namespace SUS.HTTP
 
                     var responseHeaderBytes = Encoding.UTF8.GetBytes(response.ToString());
                     await stream.WriteAsync(responseHeaderBytes, 0, responseHeaderBytes.Length);
-                    await stream.WriteAsync(response.Body, 0, response.Body.Length);
+
+                    if (response.Body != null)
+                    {
+                        await stream.WriteAsync(response.Body, 0, response.Body.Length);
+                    }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
             }
         }
     }
