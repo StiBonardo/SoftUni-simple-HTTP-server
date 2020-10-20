@@ -30,49 +30,49 @@ namespace BattleCards.Controllers
         }
 
         [HttpPost]
-        public HttpResponse Add(AddCardInputModel model)
+        public HttpResponse Add(AddCardInputModel input)
         {
             if (!this.IsUserSignedIn())
             {
                 return this.Redirect("/Users/Login");
             }
 
-            if (string.IsNullOrWhiteSpace(model.Name) || model.Name.Length < 5 || model.Name.Length > 15)
+            if (string.IsNullOrWhiteSpace(input.Name) || input.Name.Length < 5 || input.Name.Length > 15)
             {
                 return this.Error("Name should be between 5 and 15 characters long!");
             }
 
-            if (string.IsNullOrWhiteSpace(model.Image))
+            if (string.IsNullOrWhiteSpace(input.Image))
             {
                 return this.Error("Image is required!");
             }
 
-            if (!Uri.TryCreate(model.Image, UriKind.Absolute, out _))
+            if (!Uri.TryCreate(input.Image, UriKind.Absolute, out _))
             {
                 return this.Error("Image url is invalid!");
             }
 
-            if (string.IsNullOrWhiteSpace(model.Keyword))
+            if (string.IsNullOrWhiteSpace(input.Keyword))
             {
                 return this.Error("Keyword is required!");
             }
 
-            if (model.Attack < 0)
+            if (input.Attack < 0)
             {
                 return this.Error("Attack should be positive number!");
             }
 
-            if (model.Health < 0)
+            if (input.Health < 0)
             {
                 return this.Error("Health should be positive number!");
             }
 
-            if (string.IsNullOrWhiteSpace(model.Description) || model.Description.Length > 200)
+            if (string.IsNullOrWhiteSpace(input.Description) || input.Description.Length > 200)
             {
                 return this.Error("Description is required! Max 200 symbols alowed.");
             }
 
-            var cardId =  this.cardService.AddCard(model);
+            var cardId =  this.cardService.AddCard(input);
 
             var userId = this.GetUserId();
             this.cardService.AddCardToUserCollection(userId, cardId);
