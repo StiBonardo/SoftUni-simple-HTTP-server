@@ -90,7 +90,11 @@ namespace SUS.MvcFramework
                 var httpParameterValue = GetParameterFromRequest(request, parameter.Name);
                 var parameterValue = Convert.ChangeType(httpParameterValue, parameter.ParameterType);
 
-                if (parameterValue == null && parameter.ParameterType != typeof(string))
+                if (parameterValue == null && 
+                    parameter.ParameterType != typeof(string) &&
+                    parameter.ParameterType != typeof(int?)&&
+                    parameter.ParameterType != typeof(decimal?) &&
+                    parameter.ParameterType != typeof(DateTime?))
                 {
                     parameterValue = Activator.CreateInstance(parameter.ParameterType);
                     var properties = parameter.ParameterType.GetRuntimeProperties();
