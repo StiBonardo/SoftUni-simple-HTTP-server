@@ -70,9 +70,11 @@ namespace SUS.MvcFramework
                         url = attribute.Url;
                     }
 
-                    routeTable.Add(
-                        new Route(url, httpMethod, request =>
-                        ExecuteAction(request, controllerType, method, serviceCollection)));
+                    var route = new Route(url, httpMethod, request =>
+                        ExecuteAction(request, controllerType, method, serviceCollection));
+
+                    routeTable.Add(route);
+                    Console.WriteLine($"{route.Method} => {route.Path}");
                 }
             }
         }

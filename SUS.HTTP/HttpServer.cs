@@ -63,14 +63,14 @@ namespace SUS.HTTP
                     var requestString = Encoding.UTF8.GetString(data.ToArray());
                     var request = new HttpRequest(requestString);
 
-                    Console.WriteLine($"{request.Method} {request.Path} => {request.Headers.Count}");
+                    Console.WriteLine($"{request.Method} {request.Path} => {request.Headers.Count} headers");
 
                     HttpResponse response;
                     var route = this.routeTable.FirstOrDefault(
                         x => string.Compare(x.Path, request.Path, true) == 0 && x.Method == request.Method);
                     if (route != null)
                     {
-                        response = route.Action(request);
+                        response = route.Action(request);                       
                     }
                     else
                     {
